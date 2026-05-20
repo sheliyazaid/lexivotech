@@ -10,26 +10,27 @@ export function PageShell({ children, showIntro = false }: { children: ReactNode
 
   useEffect(() => {
     if (!showIntro) return;
-    if (typeof window === "undefined") return;
-    const seen = sessionStorage.getItem("lexivo-intro-seen");
-    if (seen) setIntroDone(true);
+    setIntroDone(false);
   }, [showIntro]);
 
   return (
     <div className="relative">
-      <SmoothScroll />
-      <CursorFollower />
       {showIntro && !introDone && (
         <IntroSequence
           onDone={() => {
-            sessionStorage.setItem("lexivo-intro-seen", "1");
             setIntroDone(true);
           }}
         />
       )}
-      <FloatingNav />
-      <main className="relative z-0">{children}</main>
-      <Footer />
+      {introDone && (
+        <>
+          <SmoothScroll />
+          <CursorFollower />
+          <FloatingNav />
+          <main className="relative z-0">{children}</main>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

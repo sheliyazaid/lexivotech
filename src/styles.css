@@ -1,17 +1,39 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* Fonts: Anton + Roboto Condensed via Google. Norwester self-hosted via CDN. */
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap");
+/* Local fonts */
+@font-face {
+  font-family: "Anton";
+  src: url("../fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Norwester";
-  src: url("https://cdn.jsdelivr.net/gh/theleagueof/norwester-font@master/norwester.otf") format("opentype");
-  font-weight: normal;
+  src: url("../fonts/norwester.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../fonts/RobotoCondensed-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../fonts/RobotoCondensed-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -44,9 +66,9 @@
   --color-bone: var(--bone);
   --color-stone: var(--stone);
   --color-accent-glow: var(--accent-glow);
-  --font-icon: "Anton", sans-serif;
-  --font-brand: "Norwester", "Anton", sans-serif;
-  --font-body: "Roboto Condensed", system-ui, sans-serif;
+  --font-icon: "Anton";
+  --font-brand: "Norwester";
+  --font-body: "Roboto Condensed";
 }
 
 :root {
@@ -122,9 +144,9 @@
 }
 
 @layer utilities {
-  .font-icon { font-family: var(--font-icon); letter-spacing: -0.02em; }
-  .font-brand { font-family: var(--font-brand); letter-spacing: 0.01em; }
-  .font-body { font-family: var(--font-body); }
+  .font-icon { font-family: "Anton", sans-serif !important; letter-spacing: -0.02em; }
+  .font-brand { font-family: "Norwester", "Anton", sans-serif !important; letter-spacing: 0.01em; }
+  .font-body { font-family: "Roboto Condensed", sans-serif !important; }
 
   .grain {
     position: relative;

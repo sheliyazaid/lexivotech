@@ -21,6 +21,8 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "A creative technology studio crafting brands, products and digital experiences." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: "/og-image.svg" },
+      { name: "twitter:image", content: "/og-image.svg" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
