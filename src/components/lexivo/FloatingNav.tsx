@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Instagram, Linkedin, Github } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { InstagramIcon, LinkedinIcon, GithubIcon } from "./SocialIcons";
 import { LogoMark } from "./LogoMark";
 import { MagneticButton } from "./MagneticButton";
 
@@ -132,9 +133,9 @@ export function FloatingNav() {
                 className="flex items-center justify-between border-t border-bone/15 pt-6"
               >
                 <div className="flex gap-4 text-bone/70">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={18} /></a>
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
-                  <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon /></a>
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedinIcon /></a>
+                  <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon /></a>
                 </div>
                 <a
                   href={WHATSAPP}

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { InstagramIcon, LinkedinIcon, GithubIcon } from "./SocialIcons";
 
 const WHATSAPP = "https://wa.me/0000000000?text=Hello%20Lexivo%20Tech";
 
@@ -32,9 +33,9 @@ export function Footer() {
           <div className="md:col-span-2">
             <p className="font-body uppercase tracking-[0.3em] text-[10px] text-bone/40">Connect</p>
             <ul className="mt-4 space-y-2 font-body text-bone/80 uppercase tracking-[0.15em] text-sm">
-              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><Instagram size={14}/> Instagram</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><Linkedin size={14}/> LinkedIn</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><Github size={14}/> GitHub</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><InstagramIcon size={14}/> Instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><LinkedinIcon size={14}/> LinkedIn</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-bone"><GithubIcon size={14}/> GitHub</a></li>
             </ul>
           </div>
           <div className="md:col-span-2">
