@@ -19,10 +19,10 @@ export function IntroSequence({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setPhase(1), 900), // icon settles, prep shift
-      setTimeout(() => setPhase(2), 1700), // shift left + reveal brand
-      setTimeout(() => setPhase(3), 2700), // tagline
-      setTimeout(() => setPhase(4), 3900), // exit
+      setTimeout(() => setPhase(1), 900),
+      setTimeout(() => setPhase(2), 1700),
+      setTimeout(() => setPhase(3), 2700),
+      setTimeout(() => setPhase(4), 3900),
       setTimeout(() => onDone(), 4600),
     ];
     return () => timers.forEach(clearTimeout);
@@ -35,20 +35,20 @@ export function IntroSequence({ onDone }: { onDone: () => void }) {
           key="intro"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.65, 0, 0.35, 1] } }}
-          className="fixed inset-0 z-[200]"
+          className="fixed inset-0 z-[200] overflow-hidden"
           style={{ backgroundColor: "var(--bone)" }}
         >
-          <div className="relative h-full w-full flex items-center justify-center px-6 md:px-12">
-            <div className="flex items-center justify-center gap-5 md:gap-7">
+          <div className="relative h-full w-full flex items-center justify-center px-6 md:px-12 isolate">
+            <div className="flex items-center justify-center gap-0 md:gap-7">
               <motion.span
-                className="inline-flex h-[36vw] w-[36vw] md:h-[165px] md:w-[165px] items-center justify-center rounded-[3vw] md:rounded-[14px] bg-ink text-bone select-none"
-                initial={{ opacity: 0, scale: 1.28, rotate: -6, filter: "blur(18px)" }}
+                className="inline-flex h-[36vw] w-[36vw] md:h-[165px] md:w-[165px] shrink-0 items-center justify-center rounded-[3vw] md:rounded-[14px] bg-ink text-bone select-none [transform:translateZ(0)]"
+                style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+                initial={{ opacity: 0, scale: 1.2, rotate: -4 }}
                 animate={{
                   opacity: 1,
-                  scale: phase >= 2 ? 1 : 1.06,
-                  rotate: phase >= 1 ? 0 : -6,
-                  x: phase >= 2 && isDesktop ? -18 : 0,
-                  filter: "blur(0px)",
+                  scale: phase >= 2 ? 1 : 1.04,
+                  rotate: phase >= 1 ? 0 : -4,
+                  x: phase >= 2 && isDesktop ? -12 : 0,
                 }}
                 transition={{ duration: 1.05, ease: [0.65, 0, 0.35, 1] }}
               >
@@ -57,11 +57,11 @@ export function IntroSequence({ onDone }: { onDone: () => void }) {
 
               {isDesktop && (
                 <motion.div
-                  className="hidden md:flex flex-col items-start"
-                  initial={{ opacity: 0, x: 20 }}
+                  className="hidden md:flex flex-col items-start pl-1"
+                  initial={{ opacity: 0, x: 16 }}
                   animate={{
                     opacity: phase >= 2 ? 1 : 0,
-                    x: phase >= 2 ? 0 : 20,
+                    x: phase >= 2 ? 0 : 16,
                   }}
                   transition={{ duration: 0.55, ease: [0.65, 0, 0.35, 1] }}
                 >

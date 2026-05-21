@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "../SocialIcons";
+import { CONTACT } from "@/lib/contact";
 
 const POSTS = [
   { tag: "Reel · 2.4k", color: "oklch(0.5 0.1 30)" },
@@ -19,8 +20,8 @@ export function SocialShowcase() {
             <p className="font-body uppercase tracking-[0.3em] text-[11px] text-ink/50">(Always shipping)</p>
             <h2 className="mt-3 font-brand uppercase text-4xl md:text-6xl leading-[0.95]">Follow the work, live.</h2>
           </div>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 font-body uppercase tracking-[0.25em] text-[11px] text-ink/70 hover:text-ink">
-            <InstagramIcon size={16}/> @lexivo.tech <ArrowUpRight size={14}/>
+          <a href={CONTACT.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 font-body uppercase tracking-[0.25em] text-[11px] text-ink/70 hover:text-ink">
+            <InstagramIcon size={16}/> @lexivotech <ArrowUpRight size={14}/>
           </a>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4">

@@ -1,3 +1,8 @@
+import { config as loadDotenv } from "dotenv";
+
+loadDotenv({ path: ".env.local" });
+loadDotenv({ path: ".env" });
+
 import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";

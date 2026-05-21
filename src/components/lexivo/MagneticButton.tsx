@@ -8,8 +8,10 @@ type Props = {
   href?: string;
   strength?: number;
   as?: "button" | "a";
+  type?: "button" | "submit" | "reset";
   target?: string;
   rel?: string;
+  disabled?: boolean;
 };
 
 export function MagneticButton({
@@ -19,8 +21,10 @@ export function MagneticButton({
   href,
   strength = 0.35,
   as,
+  type = "button",
   target,
   rel,
+  disabled,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -67,7 +71,7 @@ export function MagneticButton({
           {inner}
         </a>
       ) : (
-        <button onClick={onClick} className={className} data-cursor="hover">
+        <button type={type} disabled={disabled} onClick={onClick} className={className} data-cursor="hover">
           {inner}
         </button>
       )}

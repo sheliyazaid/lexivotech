@@ -6,7 +6,7 @@ import { MagneticButton } from "../MagneticButton";
 const CHIPS = [
   { label: "Web Development", x: "8%", y: "20%" },
   { label: "Branding", x: "78%", y: "18%" },
-  { label: "UI / UX", x: "12%", y: "72%" },
+  // { label: "UI / UX", x: "12%", y: "72%" },
   { label: "Automation", x: "82%", y: "68%" },
   { label: "SEO", x: "50%", y: "10%" },
 ];
@@ -73,9 +73,9 @@ export function Hero() {
         </div>
 
         <h1 className="font-brand uppercase leading-[0.85] text-ink text-[16vw] md:text-[12vw] tracking-[-0.02em]">
-          <Line text="WE BUILD" delay={0.2} />
-          <Line text="DIGITAL" delay={0.35} stroke />
-          <Line text="SOLUTIONS." delay={0.5} />
+          <Line text="WE DESIGN." delay={0.2} />
+          <Line text="WE DEVELOP." delay={0.35} stroke />
+          <Line text="WE SCALE." delay={0.5} />
         </h1>
 
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
@@ -85,7 +85,7 @@ export function Hero() {
             transition={{ delay: 0.9, duration: 0.8 }}
             className="md:col-span-5 font-body text-ink/70 text-base md:text-lg leading-relaxed max-w-md"
           >
-            A creative technology studio building <span className="text-ink">brands, products and digital experiences</span> that move quietly — and hit hard.
+            We build <span className="text-ink">powerful brands, modern websites and digital products</span> designed to stand out and grow fast.
           </motion.p>
 
           <motion.div

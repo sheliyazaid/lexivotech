@@ -33,7 +33,7 @@ function ProjectsPage() {
     <PageShell>
       <PageHeader index="003" title="Projects" lead="A small set of recent work. We take on a handful of partners each year — depth beats breadth, every time." />
       <section className="relative py-12 md:py-20 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {ALL.map((p, i) => (
             <motion.article
               key={p.n}
@@ -41,7 +41,7 @@ function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: (i % 2) * 0.1, ease: [0.65, 0, 0.35, 1] }}
-              className={`group relative aspect-[4/3] rounded-2xl overflow-hidden grain ${i % 3 === 0 ? "md:translate-y-12" : ""}`}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden grain"
               style={{ backgroundColor: p.color }}
               data-cursor="hover"
             >

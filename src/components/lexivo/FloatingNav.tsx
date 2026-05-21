@@ -2,9 +2,18 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { InstagramIcon, LinkedinIcon, GithubIcon } from "./SocialIcons";
+import { InstagramIcon, LinkedinIcon, ThreadsIcon, XIcon } from "./SocialIcons";
 import { LogoMark } from "./LogoMark";
 import { MagneticButton } from "./MagneticButton";
+import { ContactForm } from "./ContactForm";
+import { CONTACT, SOCIAL_LINKS } from "@/lib/contact";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -15,11 +24,17 @@ const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const WHATSAPP = "https://wa.me/0000000000?text=Hello%20Lexivo%20Tech";
+const ICONS = {
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+  threads: ThreadsIcon,
+  x: XIcon,
+} as const;
 
 export function FloatingNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -69,7 +84,6 @@ export function FloatingNav() {
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
-                  <span className="absolute left-4 right-4 -bottom-0.5 h-[1px] origin-left scale-x-0 bg-ink transition-transform duration-500 group-hover:scale-x-100" />
                 </Link>
               );
             })}
@@ -77,10 +91,8 @@ export function FloatingNav() {
 
           <div className="flex items-center gap-2">
             <MagneticButton
-              href={WHATSAPP}
-              as="a"
-              target="_blank"
-              rel="noreferrer"
+              as="button"
+              onClick={() => setContactOpen(true)}
               className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink text-bone font-body uppercase tracking-[0.2em] text-[11px] hover:bg-ink-soft transition-colors"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-bone animate-pulse" />
@@ -97,6 +109,18 @@ export function FloatingNav() {
           </div>
         </div>
       </motion.header>
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="z-[100] max-w-2xl max-h-[90vh] overflow-y-auto bg-bone border-ink/15 sm:rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="font-brand uppercase text-3xl text-ink tracking-wide">Let's talk</DialogTitle>
+            <DialogDescription className="font-body text-ink/60">
+              Same brief form as our contact page — we'll reply to {CONTACT.email} within one working day.
+            </DialogDescription>
+          </DialogHeader>
+          <ContactForm compact onSuccess={() => setTimeout(() => setContactOpen(false), 2200)} />
+        </DialogContent>
+      </Dialog>
 
       <AnimatePresence>
         {open && (
@@ -130,21 +154,28 @@ export function FloatingNav() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex items-center justify-between border-t border-bone/15 pt-6"
+                className="flex flex-col gap-6 border-t border-bone/15 pt-6"
               >
                 <div className="flex gap-4 text-bone/70">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon /></a>
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedinIcon /></a>
-                  <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><GithubIcon /></a>
+                  {SOCIAL_LINKS.map((s) => {
+                    const Icon = ICONS[s.icon];
+                    return (
+                      <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+                        <Icon />
+                      </a>
+                    );
+                  })}
                 </div>
-                <a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-5 py-2.5 rounded-full bg-bone text-ink font-body uppercase tracking-[0.2em] text-[11px]"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    setContactOpen(true);
+                  }}
+                  className="self-start px-5 py-2.5 rounded-full bg-bone text-ink font-body uppercase tracking-[0.2em] text-[11px]"
                 >
-                  WhatsApp
-                </a>
+                  Let's talk
+                </button>
               </motion.div>
             </div>
           </motion.div>

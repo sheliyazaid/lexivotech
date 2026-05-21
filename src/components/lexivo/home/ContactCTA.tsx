@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { MagneticButton } from "../MagneticButton";
+import { CONTACT } from "@/lib/contact";
 
 export function ContactCTA() {
   return (
@@ -14,8 +15,8 @@ export function ContactCTA() {
           <MagneticButton href="/contact" className="inline-flex items-center gap-3 px-8 py-5 rounded-full bg-ink text-bone font-body uppercase tracking-[0.25em] text-[12px]">
             Start a project <ArrowUpRight size={16}/>
           </MagneticButton>
-          <MagneticButton href="mailto:hello@lexivo.tech" className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-ink/25 text-ink font-body uppercase tracking-[0.25em] text-[12px] hover:border-ink">
-            hello@lexivo.tech
+          <MagneticButton href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-3 px-8 py-5 rounded-full border border-ink/25 text-ink font-body uppercase tracking-[0.25em] text-[12px] hover:border-ink">
+            {CONTACT.email}
           </MagneticButton>
         </div>
       </div>

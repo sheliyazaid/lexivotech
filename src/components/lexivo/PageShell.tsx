@@ -4,20 +4,23 @@ import { Footer } from "./Footer";
 import { IntroSequence } from "./IntroSequence";
 import { SmoothScroll } from "./SmoothScroll";
 import { CursorFollower } from "./CursorFollower";
+import { markIntroComplete, shouldPlayIntro } from "@/lib/intro";
 
-export function PageShell({ children, showIntro = false }: { children: ReactNode; showIntro?: boolean }) {
-  const [introDone, setIntroDone] = useState(!showIntro);
+export function PageShell({ children }: { children: ReactNode }) {
+  const [introDone, setIntroDone] = useState(true);
 
   useEffect(() => {
-    if (!showIntro) return;
-    setIntroDone(false);
-  }, [showIntro]);
+    if (shouldPlayIntro()) {
+      setIntroDone(false);
+    }
+  }, []);
 
   return (
     <div className="relative">
-      {showIntro && !introDone && (
+      {!introDone && (
         <IntroSequence
           onDone={() => {
+            markIntroComplete();
             setIntroDone(true);
           }}
         />
