@@ -72,6 +72,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "google-site-verification",
+        content: "k1_xIzAGEocaJem18kbwznCuuUAYoWy0KO4gJUyLV9c",
+      },
       { title: "Lexivo Tech — We Build Digital Solutions" },
       { name: "description", content: "Creative technology studio building brands, products and digital experiences." },
       { name: "author", content: "Lexivo Tech" },
