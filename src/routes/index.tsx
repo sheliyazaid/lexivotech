@@ -15,8 +15,8 @@ import { ContactCTA } from "@/components/lexivo/home/ContactCTA";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lexivo Tech — We Build Digital Solutions" },
-      { name: "description", content: "Lexivo Tech is a creative technology studio crafting brands, products and digital experiences for ambitious teams." },
+      { title: "Lexivo Tech | Web Design & Development Agency" },
+      { name: "description", content: "Lexivo Tech is a web design and development agency building modern websites, SaaS products, landing pages and digital experiences for startups and businesses." },
       { property: "og:title", content: "Lexivo Tech — We Build Digital Solutions" },
       { property: "og:description", content: "A creative technology studio crafting brands, products and digital experiences." },
       { property: "og:type", content: "website" },
@@ -24,7 +24,12 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: "/og-image.svg" },
       { name: "twitter:image", content: "/og-image.svg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://www.lexivotech.com",
+      },
+    ]
   }),
   component: Index,
 });
