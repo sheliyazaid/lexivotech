@@ -111,6 +111,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Lexivo Tech",
+              url: "https://www.lexivotech.com",
+              logo: "https://www.lexivotech.com/logo.png",
+              description:
+                "Web Design & Development Agency building modern websites, SaaS products and digital experiences.",
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
