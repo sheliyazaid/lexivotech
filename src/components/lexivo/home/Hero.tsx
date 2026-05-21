@@ -73,9 +73,9 @@ export function Hero() {
         </div>
 
         <h1 className="font-brand uppercase leading-[0.85] text-ink text-[16vw] md:text-[12vw] tracking-[-0.02em]">
-          <Line text="WE DESIGN." delay={0.2} />
-          <Line text="WE DEVELOP." delay={0.35} stroke />
-          <Line text="WE SCALE." delay={0.5} />
+          <Line text="LEXIVO TECH" delay={0.2} />
+          <Line text="WE DESIGN." delay={0.35} stroke />
+          <Line text="WE DEVELOP." delay={0.5} />
         </h1>
 
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
@@ -85,7 +85,7 @@ export function Hero() {
             transition={{ delay: 0.9, duration: 0.8 }}
             className="md:col-span-5 font-body text-ink/70 text-base md:text-lg leading-relaxed max-w-md"
           >
-            We build <span className="text-ink">powerful brands, modern websites and digital products</span> designed to stand out and grow fast.
+            Lexivo Tech is a web design and development agency creating modern websites, SaaS products, landing pages and digital experiences for startups and growing businesses.
           </motion.p>
 
           <motion.div
