@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "https://www.lexivotech.com/";
+// IMPORTANT: No trailing slash here
+const BASE_URL = "https://www.lexivotech.com";
 
 interface SitemapEntry {
   path: string;
@@ -22,21 +22,42 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/process", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.8" },
         ];
-        const urls = entries.map((e) => [
-          `  <url>`,
-          `    <loc>${BASE_URL}${e.path === "/" ? "" : e.path}</loc>`,
-          e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-          e.priority ? `    <priority>${e.priority}</priority>` : null,
-          `  </url>`,
-        ].filter(Boolean).join("\n"));
+
+        const urls = entries
+          .map((e) => {
+            const url =
+              e.path === "/"
+                ? `${BASE_URL}/`
+                : `${BASE_URL}${e.path}`;
+
+            return [
+              `  <url>`,
+              `    <loc>${url}</loc>`,
+              e.changefreq
+                ? `    <changefreq>${e.changefreq}</changefreq>`
+                : null,
+              e.priority
+                ? `    <priority>${e.priority}</priority>`
+                : null,
+              `  </url>`,
+            ]
+              .filter(Boolean)
+              .join("\n");
+          })
+          .join("\n");
+
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-          ...urls,
+          urls,
           `</urlset>`,
         ].join("\n");
+
         return new Response(xml, {
-          headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=3600" },
+          headers: {
+            "Content-Type": "application/xml",
+            "Cache-Control": "public, max-age=3600",
+          },
         });
       },
     },
