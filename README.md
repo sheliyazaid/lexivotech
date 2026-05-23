@@ -29,7 +29,7 @@ If this is your first time, run:
 npx wrangler login
 ```
 
-This uses the generated worker package in `dist/tanstack_start_app` and deploys the Worker with the built static assets.
+This command builds the app and deploys using the generated Cloudflare config at `dist/tanstack_start_app/wrangler.json`, so it will deploy the Worker and the built assets from `dist/client`.
 
 ## Why Cloudflare?
 
