@@ -8,6 +8,7 @@ import { Projects } from "@/components/lexivo/home/Projects";
 import { Process } from "@/components/lexivo/home/Process";
 import { About } from "@/components/lexivo/home/About";
 import { Testimonials } from "@/components/lexivo/home/Testimonials";
+import { Team } from "@/components/lexivo/home/Team";
 import { TechStack } from "@/components/lexivo/home/TechStack";
 import { SocialShowcase } from "@/components/lexivo/home/SocialShowcase";
 import { ContactCTA } from "@/components/lexivo/home/ContactCTA";
@@ -45,6 +46,7 @@ function Index() {
       <Process />
       <About />
       <Testimonials />
+      <Team />
       <TechStack />
       <SocialShowcase />
       <ContactCTA />

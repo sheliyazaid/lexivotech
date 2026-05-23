@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { MagneticButton } from "../MagneticButton";
+import { useIntroDone } from "../PageShell";
 
 const CHIPS = [
   { label: "Web Development", x: "8%", y: "20%" },
@@ -11,7 +12,8 @@ const CHIPS = [
   { label: "SEO", x: "50%", y: "10%" },
 ];
 
-export function Hero() {
+export function Hero({ showMetadata = true }: { showMetadata?: boolean }) {
+  const introDone = useIntroDone();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const smx = useSpring(mx, { stiffness: 60, damping: 20 });
@@ -66,11 +68,13 @@ export function Hero() {
 
       <motion.div style={{ y: yShift }} className="relative max-w-7xl mx-auto">
         {/* meta row */}
-        <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.3em] font-body text-ink/50 mb-12 md:mb-20">
-          <span>(Creative · Tech · Studio)</span>
-          <span className="hidden md:inline">EST. 2026 / WORLDWIDE</span>
-          <span>Index — 001</span>
-        </div>
+        {introDone && (
+          <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.3em] font-body text-ink/50 mb-12 md:mb-20">
+            <span>(Creative · Tech · Studio)</span>
+            <span className="hidden md:inline">EST. 2026 / WORLDWIDE</span>
+            <span>Index — 001</span>
+          </div>
+        )}
 
         <h1 className="font-brand uppercase leading-[0.85] text-ink text-[16vw] md:text-[12vw] tracking-[-0.02em]">
           <Line text="LEXIVO TECH" delay={0.2} />
