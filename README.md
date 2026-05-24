@@ -1,62 +1,36 @@
 # Lexivo Tech
 
-This project is configured as a Cloudflare Workers app using `@tanstack/react-start`.
-It includes a server-side route at `/api/contact` and client assets under `dist/client`.
+TanStack Start app with SSR and a server-side contact form at `/api/contact`.
 
-## Recommended deployment
+## Deploy on Vercel
 
-### 1. Install
+1. Push this repo to GitHub and connect it in [Vercel](https://vercel.com).
+2. Vercel auto-detects TanStack Start (via Nitro). Build command: `npm run build`, output is handled by Nitro.
+3. Add these **Environment Variables** in Vercel → Project → Settings → Environment Variables (Production, Preview, and Development):
+
+| Variable | Required | Example |
+|----------|----------|---------|
+| `RESEND_API_KEY` | Yes (if using Resend) | `re_...` |
+| `RESEND_FROM_EMAIL` | Yes | `onboarding@resend.dev` or your verified domain |
+| `CONTACT_EMAIL_TO` | Yes | `lexivotech@gmail.com` |
+| `RESEND_DOMAIN_VERIFIED` | Optional | `true` after domain verification in Resend |
+
+4. Redeploy after saving env vars.
+
+## Local development
 
 ```bash
 npm install
+cp .env.example .env.local
+# Add your Resend API key to .env.local
+npm run dev
 ```
 
-### 2. Build
+## Contact form
 
-```bash
-npm run build
-```
-
-### 3. Deploy to Cloudflare
-
-```bash
-npm run deploy:cloudflare
-```
-
-If this is your first time, run:
-
-```bash
-npx wrangler login
-```
-
-This command builds the app and deploys using the generated Cloudflare config at `dist/tanstack_start_app/wrangler.json`, so it will deploy the Worker and the built assets from `dist/client`.
-
-## Why Cloudflare?
-
-This repository is already set up for Cloudflare Workers / Workers Sites:
-- `wrangler.jsonc` is present
-- the build output includes `dist/tanstack_start_app` and `dist/client`
-- `src/routes/api/contact.ts` is a server route handled by the Worker runtime
-
-Vercel is not the right host for this exact build setup without additional rewrites or a different server strategy.
-
-## Environment variables
-
-Set these in Cloudflare or in `.env.local` for local development:
-
-- `RESEND_API_KEY`
-- `RESEND_FROM_EMAIL`
-- `RESEND_DOMAIN_VERIFIED`
-- `SMTP_HOST`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
-- `CONTACT_EMAIL_TO`
-
-If you are using Resend, add `RESEND_API_KEY`.
+The form posts to `/api/contact`. With `RESEND_API_KEY` set, emails are sent via Resend. Without it, configure SMTP vars instead (see `.env.example`).
 
 ## Notes
 
-- The contact form posts to `/api/contact`
-- The app currently uses Cloudflare Workers for routing and SSR
-- If you want to switch to Vercel, the project needs a dedicated Vercel function and a static build setup
+- Do **not** point DNS to Cloudflare Workers and Vercel at the same time for the same domain — use one host only.
+- If you previously used Cloudflare, remove or pause that deployment before switching DNS back to Vercel.

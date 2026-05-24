@@ -8,7 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
-    "deploy:cloudflare": "npm run build && npx wrangler deploy --config dist/tanstack_start_app/wrangler.json",
+    "deploy:vercel": "vercel --prod",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
@@ -57,6 +57,7 @@
     "input-otp": "^1.4.2",
     "lenis": "^1.3.23",
     "lucide-react": "^1.16.0",
+    "nitro": "^3.0.260522-beta",
     "nodemailer": "^8.0.7",
     "react": "^19.2.0",
     "react-day-picker": "^9.14.0",
