@@ -3,9 +3,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const ITEMS = [
-  { quote: "Lexivo didn't just redesign our site — they redesigned how we think about our product. The launch beat our annual revenue target in 11 weeks.", who: "Sara Yilmaz", role: "CEO, Northwind Goods" },
-  { quote: "Genuinely the only studio I've worked with where design, engineering and strategy speak the same language. Rare and worth every cent.", who: "Daniel Mehta", role: "Founder, Halcyon AI" },
-  { quote: "They took a vague brand idea and built an entire universe around it. We've been getting cold inbounds from competitors asking who did it.", who: "Anaïs Roux", role: "Creative Director, Maison Verre" },
+  {
+    quote:
+      "Lexivo Tech developed a high-quality website for our brand that perfectly reflects our vision. The execution was seamless, the design was modern and professional, and the overall experience exceeded our expectations.",
+    who: "Maviya Kadiwal",
+    role: "CEO, Sealventures",
+  },
+  {
+    quote:
+      "We entrusted Lexivo Tech with building our e-commerce website, and the results exceeded all expectations. They transformed our vision into a seamless, high-performing platform with a clean design and exceptional user experience. Their attention to detail and professionalism truly set their work apart.",
+    who: "Sadaf Patel",
+    role: "Owner, Trendy Finds",
+  },
+  {
+    quote:
+      "Lexivo Tech built a stunning website for our bakery with a warm, modern design and a truly professional feel. The site captures our brand perfectly and provides a smooth experience for our customers.",
+    who: "Riyaz Abdul Hamid",
+    role: "CEO, Qremsia",
+  },
+  {
+    quote:
+      "Lexivo Tech developed a highly professional website for Ayesha Arts that not only reflects our brand identity beautifully but also plays a key role in attracting online customers. The design, functionality, and overall user experience have significantly improved our digital presence and helped us connect with a wider audience. Their work truly delivers both quality and results.",
+    who: "Ayesha Aglodiya",
+    role: "Owner, Ayesha Arts",
+  },
 ];
 
 export function Testimonials() {
@@ -15,7 +36,7 @@ export function Testimonials() {
   const item = ITEMS[i];
 
   return (
-    <section className="relative py-24 md:py-36 px-6 md:px-10 bg-ink text-bone overflow-hidden">
+    <section className="relative py-16 md:py-24 px-6 md:px-10 bg-ink text-bone overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <p className="font-body uppercase tracking-[0.3em] text-[11px] text-bone/40">(Clients say)</p>
         <div className="mt-8 min-h-[320px] md:min-h-[260px] relative">

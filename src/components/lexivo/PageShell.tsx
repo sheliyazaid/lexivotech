@@ -12,19 +12,35 @@ export function useIntroDone() {
   return useContext(IntroContext).introDone;
 }
 
-export function PageShell({ children }: { children: ReactNode }) {
-  const [introDone, setIntroDone] = useState(true);
+type PageShellProps = {
+  children: ReactNode;
+  /** Play full-screen intro on first visit / reload (home only). */
+  withIntro?: boolean;
+};
+
+export function PageShell({ children, withIntro = false }: PageShellProps) {
+  const [introDone, setIntroDone] = useState(() => {
+    if (!withIntro) return true;
+    if (typeof window === "undefined") return false;
+    return !shouldPlayIntro();
+  });
 
   useEffect(() => {
-    if (shouldPlayIntro()) {
-      setIntroDone(false);
+    if (!withIntro) {
+      setIntroDone(true);
+      return;
     }
-  }, []);
+    if (!shouldPlayIntro()) {
+      setIntroDone(true);
+    }
+  }, [withIntro]);
+
+  const showIntro = withIntro && !introDone;
 
   return (
-    <IntroContext.Provider value={{ introDone }}>
+    <IntroContext.Provider value={{ introDone: !showIntro }}>
       <div className="relative">
-        {!introDone && (
+        {showIntro && (
           <IntroSequence
             onDone={() => {
               markIntroComplete();
@@ -32,7 +48,7 @@ export function PageShell({ children }: { children: ReactNode }) {
             }}
           />
         )}
-        {introDone && (
+        {!showIntro && (
           <>
             <SmoothScroll />
             <CursorFollower />

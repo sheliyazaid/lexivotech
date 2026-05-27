@@ -33,11 +33,14 @@ export const Route = createFileRoute("/api/contact")({
           const msg = error instanceof Error ? error.message : "Failed to send message.";
           const isConfig = msg.includes("not configured");
           const isResend = msg.startsWith("Resend error:");
+          const isProduction = process.env.NODE_ENV === "production";
           return Response.json(
             {
               ok: false,
               error: isConfig
-                ? "Email service is not configured. Add keys to .env.local and restart the dev server."
+                ? isProduction
+                  ? "Email service is temporarily unavailable. Please email us at lexivotech@gmail.com."
+                  : "Email service is not configured. Add RESEND_API_KEY to .env.local and restart the dev server."
                 : isResend
                   ? msg.replace("Resend error: ", "")
                   : "Could not send your message. Please try again later.",

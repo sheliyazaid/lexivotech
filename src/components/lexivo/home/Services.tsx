@@ -17,7 +17,7 @@ export function Services() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <section id="services" className="relative py-24 md:py-36 px-6 md:px-10">
+    <section id="services" className="relative py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
           <div>

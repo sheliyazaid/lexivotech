@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section className="relative py-24 md:py-36 px-6 md:px-10 bg-bone-soft overflow-hidden grain">
+    <section className="relative py-16 md:py-24 px-6 md:px-10 bg-bone-soft overflow-hidden grain">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-4">
           <p className="font-body uppercase tracking-[0.3em] text-[11px] text-ink/50">(The studio)</p>

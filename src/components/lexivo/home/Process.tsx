@@ -10,7 +10,7 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section className="relative py-24 md:py-36 px-6 md:px-10">
+    <section className="relative py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-20">
           <div>

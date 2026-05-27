@@ -1,4 +1,5 @@
 import { useRef, type ReactNode, type MouseEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 type Props = {
@@ -13,6 +14,10 @@ type Props = {
   rel?: string;
   disabled?: boolean;
 };
+
+function isInternalPath(href: string) {
+  return href.startsWith("/") && !href.startsWith("//");
+}
 
 export function MagneticButton({
   children,
@@ -59,7 +64,11 @@ export function MagneticButton({
       onMouseLeave={reset}
       className="inline-flex"
     >
-      {Tag === "a" ? (
+      {Tag === "a" && href && isInternalPath(href) ? (
+        <Link to={href} onClick={onClick} className={className} data-cursor="hover">
+          {inner}
+        </Link>
+      ) : Tag === "a" ? (
         <a
           href={href}
           target={target}

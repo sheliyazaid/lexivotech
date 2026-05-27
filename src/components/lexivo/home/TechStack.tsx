@@ -4,7 +4,7 @@ const TECH = ["React", "TypeScript", "Next.js", "TanStack", "Tailwind", "Framer 
 
 export function TechStack() {
   return (
-    <section className="relative py-20 md:py-28 px-6 md:px-10 bg-bone">
+    <section className="relative py-14 md:py-20 px-6 md:px-10 bg-bone">
       <div className="max-w-7xl mx-auto">
         <p className="font-body uppercase tracking-[0.3em] text-[11px] text-ink/50 text-center">(Tools of the trade)</p>
       </div>

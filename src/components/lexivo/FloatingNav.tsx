@@ -129,39 +129,63 @@ export function FloatingNav() {
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
+            transition={{ duration: 0.55, ease: [0.7, 0, 0.2, 1] }}
             className="fixed inset-0 z-[80] bg-ink text-bone overflow-hidden"
           >
-            <div className="h-full w-full flex flex-col px-6 pt-28 pb-10">
-              <nav className="flex-1 flex flex-col gap-3">
-                {NAV.map((item, i) => (
-                  <motion.div
-                    key={item.to}
-                    initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.15 + i * 0.06, duration: 0.6, ease: [0.65, 0, 0.35, 1] }}
-                  >
-                    <Link
-                      to={item.to}
-                      className="block font-brand uppercase text-5xl sm:text-6xl leading-none py-2 text-bone hover:text-stone transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-col gap-6 border-t border-bone/15 pt-6"
+            {/* subtle grid texture */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "linear-gradient(var(--bone) 1px, transparent 1px), linear-gradient(90deg, var(--bone) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+
+            <div className="relative h-full w-full flex flex-col px-6 pt-24 pb-8">
+
+              {/* index label */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="font-body uppercase tracking-[0.3em] text-[10px] text-bone/30 mb-6"
               >
-                <div className="flex gap-4 text-bone/70">
+                Navigation
+              </motion.p>
+
+              <nav className="flex-1 flex flex-col">
+                {NAV.map((item, i) => {
+                  const active = pathname === item.to;
+                  return (
+                    <motion.div
+                      key={item.to}
+                      initial={{ x: -30, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 + i * 0.07, duration: 0.55, ease: [0.65, 0, 0.35, 1] }}
+                      className="border-t border-bone/10 first:border-t-0"
+                    >
+                      <Link
+                        to={item.to}
+                        className="group flex items-center justify-between py-4"
+                      >
+                        <span className={`font-brand uppercase text-4xl sm:text-5xl leading-none transition-colors ${active ? "text-bone" : "text-bone/50 group-hover:text-bone"}`}>
+                          {item.label}
+                        </span>
+                        <span className="font-body text-[10px] tracking-[0.2em] text-bone/30 group-hover:text-bone/60 transition-colors">
+                          0{i + 1}
+                        </span>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 }}
+                className="flex items-center justify-between border-t border-bone/15 pt-5"
+              >
+                <div className="flex gap-5 text-bone/50">
                   {SOCIAL_LINKS.map((s) => {
                     const Icon = ICONS[s.icon];
                     return (
-                      <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
-                        <Icon />
+                      <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="hover:text-bone transition-colors">
+                        <Icon size={16} />
                       </a>
                     );
                   })}
@@ -172,8 +196,9 @@ export function FloatingNav() {
                     setOpen(false);
                     setContactOpen(true);
                   }}
-                  className="self-start px-5 py-2.5 rounded-full bg-bone text-ink font-body uppercase tracking-[0.2em] text-[11px]"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-bone text-ink font-body uppercase tracking-[0.2em] text-[11px]"
                 >
+                  <span className="h-1.5 w-1.5 rounded-full bg-ink animate-pulse" />
                   Let's talk
                 </button>
               </motion.div>

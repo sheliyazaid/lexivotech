@@ -9,7 +9,7 @@ const REASONS = [
 
 export function WhyUs() {
   return (
-    <section className="relative py-24 md:py-36 px-6 md:px-10 bg-ink text-bone">
+    <section className="relative py-16 md:py-24 px-6 md:px-10 bg-ink text-bone">
       <div className="max-w-7xl mx-auto">
         <p className="font-body uppercase tracking-[0.3em] text-[11px] text-bone/40">(Why us)</p>
         <h2 className="mt-3 font-brand uppercase text-5xl md:text-8xl leading-[0.9] max-w-5xl">

@@ -6,7 +6,7 @@ export const CONTACT = {
   instagram: "https://www.instagram.com/lexivotech/",
   threads: "https://www.threads.com/@lexivotech",
   x: "https://x.com/LexivoTech",
-  location: "Western Pk Rd, Kashigaon, Mira Road East, Mira Bhayandar, Maharashtra 401107",
+  location: "Western Park, Jari Mari Rd, Kashimira, Mira Road(E), Thane 401107",
   mapsUrl:
     "https://www.google.com/maps/place/Western+Pk+Rd,+Kashigaon,+Mira+Road+East,+Mira+Bhayandar,+Maharashtra+401107/@19.2730171,72.8873194,17z",
   mapsEmbed:

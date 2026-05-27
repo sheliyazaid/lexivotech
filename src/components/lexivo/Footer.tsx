@@ -133,7 +133,7 @@ export function Footer() {
           className="flex items-center gap-3 hover:text-bone transition-colors"
         >
           <Phone size={15} />
-          +91 77985 47243
+          77985 47243
         </a>
       </li>
 

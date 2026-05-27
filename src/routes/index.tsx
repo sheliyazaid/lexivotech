@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <PageShell>
+    <PageShell withIntro>
       <Hero />
       <MarqueeStrip />
       <Services />
